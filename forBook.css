@@ -1,0 +1,36 @@
+.header{
+    font-family: "Arial Black", cursive;
+    margin: auto;
+    font-size: 15px;
+}
+table {
+    border: 1px solid #eee;
+    table-layout: fixed;
+    width: 50%;
+    margin-bottom: 20px;
+}
+th {
+    font-weight: bold;
+    padding: 5px;
+    background: #ADFF2F;
+    border: 1px solid #dddddd;
+}
+tr {
+    table-layout: fixed;
+    width: 50%;
+    margin-bottom: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid #dddddd;
+}
+td{
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    text-align: left;
+}
+tbody tr:nth-child(odd){
+    background: #fff;
+}
+tbody tr:nth-child(even){
+    background: #E0FFFF;
+}

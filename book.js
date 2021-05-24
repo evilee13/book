@@ -26,33 +26,46 @@ let dataSource = [
         title: "Рассказ о Шерлоке Холмсе",
         genre: "детектив",
         authors: "Конан Дойль А.",
-        review:"В этой книге знаменитый сыщик Шерлок Холмс и его друг доктор Уотсон раскрывают самые запутанные преступления и ловят самых ловких злодеев."
+        review: "В этой книге знаменитый сыщик Шерлок Холмс и его друг доктор Уотсон раскрывают самые запутанные преступления и ловят самых ловких злодеев."
     },
 ]
 
 let table = document.getElementById('table');
-for (let book of dataSource) {
-    let tr = document.createElement('tr');
-    let td1 = document.createElement('td');
-    td1.onclick = () => {document.location.href = './aboutBook.html'}
-    td1.innerHTML = `<a href = '#'>${book.title}</a>`;
 
-    tr.appendChild(td1);
+function renderRows() {
+    for (let book of dataSource) {
+        let tr = document.createElement('tr');
+        let td1 = document.createElement('td');
+        td1.onclick = () => {
+            document.location.href = './aboutBook.html'
+        }
+        td1.innerHTML = `<a href = '#'>${book.title}</a>`;
 
-    let td2 = document.createElement('td');
-    td2.innerHTML = book.genre;
-    tr.appendChild(td2);
+        tr.appendChild(td1);
 
-    let td3 = document.createElement('td');
-    td3.innerHTML = book.authors;
-    tr.appendChild(td3);
+        let td2 = document.createElement('td');
+        td2.innerHTML = book.genre;
+        tr.appendChild(td2);
 
-    table.appendChild(tr);
+        let td3 = document.createElement('td');
+        td3.innerHTML = book.authors;
+        tr.appendChild(td3);
+
+        table.appendChild(tr);
+    }
 }
-document.getElementById('titleOfBooks').addEventListener('click',byField);
-function byField(field) {
+
+function sortBook(field) {
     return (a, b) => a[field] > b[field] ? 1 : -1;
 }
-dataSource.sort(byField('title'))
-dataSource.forEach(dataSource => console.log(dataSource.title))
-
+document.addEventListener('DOMContentLoaded', renderRows());
+document.getElementById('titleOfBooks').addEventListener('click', () => {
+    dataSource.sort(sortBook('title'))
+    dataSource.map(removeRows)
+    dataSource.forEach(renderRows('title'))
+});
+function removeRows() {
+    while (table.rows.length>1){
+        table.deleteRow(1);
+    }
+}

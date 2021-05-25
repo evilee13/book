@@ -37,7 +37,7 @@ function renderRows() {
         let tr = document.createElement('tr');
         let td1 = document.createElement('td');
         td1.onclick = () => {
-            document.location.href = './aboutBook.html'
+            document.location.href = `./aboutBook.html?title=${book.title}&genre=${book.genre}&authors=${book.authors}&review=${book.review}`
         }
         td1.innerHTML = `<a href = '#'>${book.title}</a>`;
 
@@ -58,14 +58,16 @@ function renderRows() {
 function sortBook(field) {
     return (a, b) => a[field] > b[field] ? 1 : -1;
 }
-document.addEventListener('DOMContentLoaded', renderRows());
+
+document.addEventListener('DOMContentLoaded', renderRows);
 document.getElementById('titleOfBooks').addEventListener('click', () => {
     dataSource.sort(sortBook('title'))
     dataSource.map(removeRows)
-    dataSource.forEach(renderRows('title'))
+    renderRows()
 });
+
 function removeRows() {
-    while (table.rows.length>1){
+    while (table.rows.length > 1) {
         table.deleteRow(1);
     }
 }

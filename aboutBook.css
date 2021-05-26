@@ -1,20 +1,69 @@
-.container{
-    width: 100%;
-    max-width: 960px;
-    margin: auto;
-}
 #title {
     font-family: "Arial Black", cursive;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     color: brown;
 }
-#genre {
-    font-family: "Arial Black", cursive;
+
+#img img {
+    width: 80%;
+    height: auto;
     text-align: center;
 }
-#img img {
-    width: 10%;
-    height: auto;
-    text-align: left;
+
+#table {
+    width:800px;
+}
+
+.insideTable {
+    text-align: center;
+    padding-left: 10px;
+}
+
+.imageBorder {
+    width: 50%;
+    text-align: right;
+    padding: 10px;
+}
+
+.header {
+    text-align: center;
+    font-weight: bold;
+}
+
+.info {
+    padding: 10px;
+    font-size: 15px;
+}
+
+.description {
+    width: 100%;
+    padding: 25px;
+    text-align: justify;
+}
+
+@media only screen and (max-width: 500px) {
+    #table {
+        width: 100%;
+    }
+    .imageBorder {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+    }
+    .insideTable {
+        width:100%;
+        text-align: center;
+        padding-left: 10px;
+    }
+    .description{
+        width: 80%;
+    }
+
+    #table td {
+        display: block;
+    }
+    .insideTable td {
+        display: block;
+    }
 }

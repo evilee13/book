@@ -1,6 +1,6 @@
 .header{
     font-family: "Arial Black", cursive;
-    margin: auto;
+    margin-left: 50px;
     font-size: 15px;
 }
 table {
@@ -12,7 +12,7 @@ table {
 th {
     font-weight: bold;
     padding: 5px;
-    background: #ADFF2F;
+    background: #32cd32;
     border: 1px solid #dddddd;
 }
 tr {
@@ -28,9 +28,9 @@ td{
     border: 1px solid #eee;
     text-align: left;
 }
-tbody tr:nth-child(odd){
-    background: #fff;
+tr:nth-child(odd){
+    background: #98fb98;
 }
-tbody tr:nth-child(even){
-    background: #E0FFFF;
+tr:nth-child(even){
+    background: #ffffff;
 }

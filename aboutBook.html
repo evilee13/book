@@ -7,12 +7,38 @@
     <style></style>
 </head>
 <body>
-<div id ="title"></div>
-<div id ="genre"></div>
-<div id ="authors"></div>
-<div id ="review"></div>
-<div id ="img"></div>
-<div id ="dateOfPublication"></div>
+<table id="table">
+    <tr>
+        <td colspan="2">
+            <div id="title"></div>
+        </td>
+    </tr>
+    <tr>
+        <td class="imageBorder">
+            <div id="img"></div>
+        </td>
+        <td> <table class="insideTable">
+        <tr>
+            <td class="header">Жанр</td>
+            <td class="info"> <div id="genre"></div></td>
+        </tr>
+        <tr>
+            <td class="header">Авторы</td>
+            <td class="info"><div id="authors"></div></td>
+        </tr>
+        <tr>
+            <td class="header">Дата</td>
+            <td class="info"><div id="dateOfPublication"></div></td>
+        </tr>
+    </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" class="description">
+            <div id="review"></div>
+        </td>
+    </tr>
+</table>
 <script src="aboutBook.js"></script>
 </body>
 </html>

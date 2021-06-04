@@ -25,7 +25,6 @@ function fillElement() {
     let book = getElement();
     for (let books in book) {
         let element = document.getElementById(books);
-        if (element) {
             if (element) {
                 if (books === 'img') {
                     let img = document.createElement('img')

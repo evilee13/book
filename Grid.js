@@ -70,10 +70,11 @@ export default class Grid {
         btn.addEventListener('click', () => {
             let listOfElements = document.querySelectorAll('.highlight');
             Array.from(listOfElements);
-            let indexElem = listOfElements.forEach(function (element) {
-                return element.dataset.id
+            let indexElem = [];
+            listOfElements.forEach(function (element) {
+                indexElem.push(element.dataset.id)
             })
-            this.dataSource.splice(indexElem, 1)
+            this.dataSource.splice(indexElem-1, 1)
             this.redraw()
         })
     }

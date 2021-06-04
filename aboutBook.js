@@ -1,4 +1,4 @@
-import {dataSource} from "./baseOfBooks.js";
+import {structure} from "./structure.js";
 
 "use strict";
 
@@ -16,7 +16,7 @@ function getParams() {
 
 function getElement() {
     let params = getParams();
-    return dataSource.find(item => {
+    return structure.dataSource.find(item => {
         return Number.parseInt(item.id) === Number.parseInt(params.id)
     });
 }

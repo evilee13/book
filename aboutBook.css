@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-#table {
+#bookTable {
     width:800px;
 }
 
@@ -43,7 +43,7 @@
 }
 
 @media only screen and (max-width: 500px) {
-    #table {
+    #bookTable {
         width: 100%;
     }
     .imageBorder {
@@ -60,7 +60,7 @@
         width: 80%;
     }
 
-    #table td {
+    #bookTable td {
         display: block;
     }
     .insideTable td {

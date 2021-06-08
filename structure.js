@@ -65,6 +65,6 @@ export let structure = {
             td.innerHTML = row[columnName];
         }
         tr.appendChild(td)
-    }
+    },
 }
 

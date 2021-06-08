@@ -35,7 +35,6 @@ function fillElement() {
                 }
             }
         }
-    }
 }
 
 fillElement()

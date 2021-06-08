@@ -37,3 +37,13 @@ tr:nth-child(even){
 .highlight{
     background-color: lightcoral !important;
 }
+
+#filterText {
+    width: 10%;
+    margin-left: 70px;
+}
+
+#delRow {
+    width: 10%;
+    margin-right: 70px;
+}

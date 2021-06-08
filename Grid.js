@@ -10,7 +10,7 @@ export default class Grid {
         this.table = document.getElementById(id);
         this.createTable();
         this.createButton();
-
+        this.createFilter();
     }
 
     redraw(data) {
@@ -18,10 +18,26 @@ export default class Grid {
             this.render(this.dataSource);
     }
 
-    filter([columnName, value]) {
-        this.render(this.dataSource.filter(item => {
+    filter(columnName, value) {
+        return this.dataSource.filter(item => {
             return item[columnName] === value;
-        }))
+        })
+    }
+
+    createFilter() {
+        let input = document.createElement("input");
+        input.type = "text";
+        input.id = 'filterText';
+        input.innerHTML = 'Фильтр';
+        document.body.appendChild(input)
+
+        let buttonFilter = document.createElement("button");
+        buttonFilter.innerHTML = "Отфильтровать"
+        buttonFilter.id= 'buttonFilter'
+        document.body.appendChild(buttonFilter)
+        buttonFilter.addEventListener('click',()=>{
+        this.redraw(this.filter('genre',input.value.toLowerCase()))
+        })
     }
 
     createTable() {
@@ -41,12 +57,12 @@ export default class Grid {
     render(data) {
         this.removeRows(this.tblBody);
         for (let i = 0; i < data.length; i++) {
-            let book = data[i];
+            let tableRow = data[i];
             let tr = document.createElement('tr');
             for (let col of this.columns) {
-                this.renderer(i, book, col.columnName, tr)
+                this.renderer(i, tableRow, col.columnName, tr)
             }
-            tr.dataset.id = book.id
+            tr.dataset.id = tableRow.id
             this.tblBody.appendChild(tr);
         }
         this.tblBody.addEventListener('click', (event) => {
@@ -63,9 +79,11 @@ export default class Grid {
             tbody.deleteRow(0);
         }
     }
-    createButton () {
+
+    createButton() {
         let btn = document.createElement("BUTTON");
         btn.innerHTML = "Удалить строку";
+        btn.id='delRow';
         document.body.appendChild(btn)
         btn.addEventListener('click', () => {
             let listOfElements = document.querySelectorAll('.highlight');
@@ -74,21 +92,16 @@ export default class Grid {
             listOfElements.forEach(function (element) {
                 indexElem.push(element.dataset.id)
             })
-            this.dataSource.splice(indexElem-1, 1)
+            this.remove(indexElem[0])
             this.redraw()
         })
     }
+
+    remove(id) {
+        this.dataSource.forEach((item, index) => {
+            if (Number.parseInt(item.id) === Number.parseInt(id)) {
+                this.dataSource.splice(index, 1)
+            }
+        })
+    }
 }
-
-// let input = document.createElement("input");
-// input.type = "text";
-// input.innerHTML="Отфильтровать";
-// input.id = 'filterText'
-// document.body.appendChild(input)
-//
-// let buttonFilter= document.createElement("button");
-// buttonFilter.innerHTML="Отфильтровать"
-// buttonFilter.value = 'filterButton'
-// document.body.appendChild(buttonFilter)
-
-

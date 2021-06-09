@@ -33,10 +33,11 @@ export default class Grid {
 
         let buttonFilter = document.createElement("button");
         buttonFilter.innerHTML = "Отфильтровать"
-        buttonFilter.id= 'buttonFilter'
+        buttonFilter.id = 'buttonFilter'
         document.body.appendChild(buttonFilter)
-        buttonFilter.addEventListener('click',()=>{
-        this.redraw(this.filter('genre',input.value.toLowerCase()))
+        buttonFilter.addEventListener('click', () => {
+            this.filterParams ={column:"genre",value:input.value.toLowerCase()}
+            this.redraw(this.filter('genre', input.value.toLowerCase()))
         })
     }
 
@@ -56,6 +57,9 @@ export default class Grid {
 
     render(data) {
         this.removeRows(this.tblBody);
+        if (this.filterParams) {
+            data = this.filter(this.filterParams.column,this.filterParams.value)
+        }
         for (let i = 0; i < data.length; i++) {
             let tableRow = data[i];
             let tr = document.createElement('tr');
@@ -71,7 +75,6 @@ export default class Grid {
             if (!this.tblBody.contains(target)) return;
             target.classList.add('highlight');
         });
-
     }
 
     removeRows(tbody) {
@@ -83,7 +86,7 @@ export default class Grid {
     createButton() {
         let btn = document.createElement("BUTTON");
         btn.innerHTML = "Удалить строку";
-        btn.id='delRow';
+        btn.id = 'delRow';
         document.body.appendChild(btn)
         btn.addEventListener('click', () => {
             let listOfElements = document.querySelectorAll('.highlight');
